@@ -5,7 +5,10 @@ const FifteenPuzzleLogic_1 = require("./model/FifteenPuzzleLogic");
 const PuzzleView_1 = require("./view/PuzzleView");
 class FifteenPuzzleGame {
     constructor() {
-        this.controller = new GameController_1.GameController(new PuzzleView_1.PuzzleView(), new FifteenPuzzleLogic_1.FifteenPuzzleLogic());
+        const sizeArg = process.argv.slice(2);
+        let boardSize = -1;
+        sizeArg.length < 1 ? boardSize = 4 : boardSize = parseInt(sizeArg[0], 10);
+        this.controller = new GameController_1.GameController(new PuzzleView_1.PuzzleView(), new FifteenPuzzleLogic_1.FifteenPuzzleLogic(boardSize));
     }
     playGame() {
         this.controller.makeMove().then((solved) => {

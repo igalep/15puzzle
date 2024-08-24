@@ -1,10 +1,17 @@
+
+
+
+
 import shuffle from 'shuffle-array';
 
 export class FifteenPuzzleLogic {
     private emptyCell : [number , number];
     private gameBoard : number [][];
+    private boardSize : number;
 
-    constructor (){
+    constructor (boardSize: number){
+        this.boardSize = boardSize;
+
         this.gameBoard = [];
 
         this.generateBoard();
@@ -16,7 +23,7 @@ export class FifteenPuzzleLogic {
     }
 
     private generateBoard(): void{
-        const numbersArr = [...Array(15).keys()].map(n => n + 1).concat([0]);
+        const numbersArr = [...Array(Math.pow(this.boardSize, 2) - 1).keys()].map(n => n + 1).concat([0]);
 
         do {  //run in loop untill the board is solvable 
             shuffle(numbersArr);
@@ -24,8 +31,8 @@ export class FifteenPuzzleLogic {
 
         //create 2D array from shuffeled 1D array by slicing it
         const board: number[][] = [];
-        for (let i = 0; i < 4; i++){
-            board.push(numbersArr.slice(i * 4, (i + 1) * 4));
+        for (let i = 0; i < this.boardSize; i++){
+            board.push(numbersArr.slice(i * this.boardSize, (i + 1) * this.boardSize));
         }
 
         this.gameBoard = board;        
@@ -62,7 +69,7 @@ export class FifteenPuzzleLogic {
 
          switch(direction) {
             case 'up':
-                if (row < 3) {this.swapCells([row + 1, col]); return true;}
+                if (row < this.boardSize - 1) {this.swapCells([row + 1, col]); return true;}
                 else { return false;}
 
             case 'down':
@@ -74,7 +81,7 @@ export class FifteenPuzzleLogic {
                 else { return false;}
             
             case 'left':
-                if (col < 3) {this.swapCells([row, col + 1]); return true;}
+                if (col < this.boardSize - 1) {this.swapCells([row, col + 1]); return true;}
                 else { return false;}
 
             default:
