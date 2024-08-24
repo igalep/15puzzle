@@ -1,4 +1,4 @@
-import { FifteenPuzzleLogic } from "../model/FifteenPuzzleLogic";
+import { FifteenPuzzleLogic } from "../src/model/FifteenPuzzleLogic";
 
 describe(`Solvable board`, () => {
     let model: FifteenPuzzleLogic;
