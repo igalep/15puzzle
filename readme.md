@@ -13,4 +13,4 @@ A console-based implementation of the classic 15-puzzle game using TypeScript an
 
 ### UnitTests
 - The model (FifteenPuzzleLogic class) contains 3 suites of unitests for part of the model functions
-- Inorder to run the unitests run `npx jest`
+- Inorder to run the unitests run `npx jest` --> you should run `npm start` or `npm install` first
