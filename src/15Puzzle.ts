@@ -1,4 +1,3 @@
-
 import {GameController} from './controller/GameController';
 import { FifteenPuzzleLogic } from './model/FifteenPuzzleLogic';
 import { PuzzleView } from './view/PuzzleView';

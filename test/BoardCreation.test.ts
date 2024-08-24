@@ -1,4 +1,4 @@
-import { FifteenPuzzleLogic } from "../model/FifteenPuzzleLogic";
+import { FifteenPuzzleLogic } from "../src/model/FifteenPuzzleLogic";
 
 const testData = [
     {'boardSize': 3},
