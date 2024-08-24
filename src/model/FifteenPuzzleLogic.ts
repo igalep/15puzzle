@@ -23,7 +23,7 @@ export class FifteenPuzzleLogic {
     }
 
     private generateBoard(): void{
-        const numbersArr = [...Array(this.boardSize - 1).keys()].map(n => n + 1).concat([0]);
+        const numbersArr = [...Array(Math.pow(this.boardSize, 2) - 1).keys()].map(n => n + 1).concat([0]);
 
         do {  //run in loop untill the board is solvable 
             shuffle(numbersArr);
