@@ -1,7 +1,3 @@
-
-
-
-
 import shuffle from 'shuffle-array';
 
 export class FifteenPuzzleLogic {
@@ -11,11 +7,17 @@ export class FifteenPuzzleLogic {
 
     constructor (boardSize: number){
         this.boardSize = boardSize;
-
+        this.emptyCell = [-1,-1];
         this.gameBoard = [];
 
-        this.generateBoard();
-        this.emptyCell = this.findEmptyCell();
+        this.init();
+    }
+
+    private init(){
+        do { 
+            this.generateBoard();
+            this.emptyCell = this.findEmptyCell();
+        } while (this.emptyCell[0] == -1 || this.emptyCell[1] == -1)
     }
 
     getBoard(): number [][]{
@@ -27,7 +29,7 @@ export class FifteenPuzzleLogic {
 
         do {  //run in loop untill the board is solvable 
             shuffle(numbersArr);
-        } while (!this.isBoardSolvable(numbersArr))
+        } while (!this.isBoardSolvable(numbersArr.filter(number => number !== 0)))
 
         //create 2D array from shuffeled 1D array by slicing it
         const board: number[][] = [];
@@ -38,6 +40,7 @@ export class FifteenPuzzleLogic {
         this.gameBoard = board;        
     }
 
+    //return [-1,-1] if empty cell wasnt found
     private findEmptyCell() : [number , number] {
         let row = 0;
         let col = -1;
@@ -48,7 +51,7 @@ export class FifteenPuzzleLogic {
 
             break;
         }
-        return [row, col];
+        return (col == -1 ) ? [-1, -1] : [row, col];
     }
 
 
