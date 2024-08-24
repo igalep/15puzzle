@@ -1,0 +1,22 @@
+{
+  "name": "15puzzle",
+  "version": "1.0.0",
+  "main": "15Puzzle.js",
+  "scripts": {
+    "build": "tsc",
+    "setup": "npm install",
+    "start": "npm run setup && npm run build && node dist/15Puzzle.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "@types/shuffle-array": "^1.0.5",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "shuffle-array": "^1.0.1"
+  }
+}
