@@ -8,7 +8,13 @@ class FifteenPuzzleGame{
     private controller : GameController;
 
     constructor(){
-        this.controller = new GameController(new PuzzleView() , new FifteenPuzzleLogic());
+        const sizeArg = process.argv.slice(2)
+
+        let boardSize = -1;
+        sizeArg.length < 1 ? boardSize = 4 : boardSize = parseInt(sizeArg[0], 10);
+
+        this.controller = new GameController(new PuzzleView(), 
+                                            new FifteenPuzzleLogic(boardSize));
     }
 
     playGame() : void {
@@ -16,7 +22,7 @@ class FifteenPuzzleGame{
             if (!solved) { this.playGame(); } 
         });
     }
-}
+}  
 
 
 

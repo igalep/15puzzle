@@ -6,7 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FifteenPuzzleLogic = void 0;
 const shuffle_array_1 = __importDefault(require("shuffle-array"));
 class FifteenPuzzleLogic {
-    constructor() {
+    constructor(boardSize) {
+        this.boardSize = boardSize;
         this.gameBoard = [];
         this.generateBoard();
         this.emptyCell = this.findEmptyCell();
@@ -15,14 +16,14 @@ class FifteenPuzzleLogic {
         return this.gameBoard;
     }
     generateBoard() {
-        const numbersArr = [...Array(15).keys()].map(n => n + 1).concat([0]);
+        const numbersArr = [...Array(this.boardSize - 1).keys()].map(n => n + 1).concat([0]);
         do { //run in loop untill the board is solvable 
             (0, shuffle_array_1.default)(numbersArr);
         } while (!this.isBoardSolvable(numbersArr));
         //create 2D array from shuffeled 1D array by slicing it
         const board = [];
-        for (let i = 0; i < 4; i++) {
-            board.push(numbersArr.slice(i * 4, (i + 1) * 4));
+        for (let i = 0; i < this.boardSize; i++) {
+            board.push(numbersArr.slice(i * this.boardSize, (i + 1) * this.boardSize));
         }
         this.gameBoard = board;
     }
@@ -53,7 +54,7 @@ class FifteenPuzzleLogic {
         const [row, col] = this.emptyCell;
         switch (direction) {
             case 'up':
-                if (row < 3) {
+                if (row < this.boardSize - 1) {
                     this.swapCells([row + 1, col]);
                     return true;
                 }
@@ -77,7 +78,7 @@ class FifteenPuzzleLogic {
                     return false;
                 }
             case 'left':
-                if (col < 3) {
+                if (col < this.boardSize - 1) {
                     this.swapCells([row, col + 1]);
                     return true;
                 }
