@@ -1,6 +1,6 @@
 import { FifteenPuzzleLogic } from "../src/model/FifteenPuzzleLogic";
 
-describe(`Find empty cell`, () =>{
+describe(`Find empty cell`, () => {
     let model: FifteenPuzzleLogic;
 
     beforeEach(() => {

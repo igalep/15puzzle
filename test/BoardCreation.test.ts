@@ -13,10 +13,10 @@ testData.forEach(data => {
             model = new FifteenPuzzleLogic(data.boardSize);
         });
     
-        test(`Board creation - possitive`, () => {
+        test(`Board creation - positive`, () => {
             model['generateBoard']();
             expect(model['gameBoard'].length * model['gameBoard'][0].length).toBe(
-                Math.pow(model['boardSize'],2));
+                Math.pow(model['boardSize'], 2));
         });
     
         test(`Board is solvable`, () => {
